@@ -32,8 +32,11 @@ fi
 
 if docker exec $container_name test -f "${target_path}${model_path}${updated_flag}"; then
   echo "Updated model already exists in the container."
-  echo "Exiting..."
-  exit 0
+  echo "Replacing again in..."
+  for i in 10 9 8 7 6 5 4 3 2 1; do
+    echo "$i..."
+    sleep 1
+  done
 fi
 
 if docker exec $container_name test -f "${target_path}${model_path}${model_name}"; then
